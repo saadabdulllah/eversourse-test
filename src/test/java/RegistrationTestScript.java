@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -33,17 +34,17 @@ public class RegistrationTestScript {
 
         closePopUp();
         varifyHomePage();
-        dealyFor(2000);
+        dealyFor(1000);
 
         clickAccountLink();
         closePopUp();
         varifyRegisterPage();
-        dealyFor(2000);
+        dealyFor(1000);
 
         clickRegisterLink();
         closePopUp();
         varifyCreateNewUserPage();
-        dealyFor(2000);
+        dealyFor(1000);
 
         registerUser();
 
@@ -138,7 +139,7 @@ public class RegistrationTestScript {
         WebElement email = driver.findElement(By.xpath(".//*[@id='Email']"));
         email.sendKeys("saadabdullah@mail.com");
 
-        WebElement confirEmail = driver.findElement(By.xpath(".//*[@id='Email']"));
+        WebElement confirEmail = driver.findElement(By.xpath(".//*[@id='ConfirmEmail']"));
         confirEmail.sendKeys("saadabdullah@mail.com");
 
         WebElement userID = driver.findElement(By.xpath(".//*[@id='WebId']"));
@@ -150,17 +151,15 @@ public class RegistrationTestScript {
         WebElement confirmPassword = driver.findElement(By.xpath(".//*[@id='ConfirmPassword']"));
         confirmPassword.sendKeys("1234567asdf");
 
-        WebElement dropDownBox = driver.findElement(By.xpath(".//*[@id='RegisterForm']/form/div[5]/div/div/div/button"));
-        dropDownBox.click();
-
-        WebElement option = driver.findElement(By.xpath("//select[@id='SecretQuestion']"));
-
-        Select dropdown = new Select(option);
-        dropdown.selectByIndex(3);
+        WebElement dropDownBoxBUtton = driver.findElement(By.xpath("//button[@class='btn dropdown-toggle selectpicker btn-select']"));
+        dropDownBoxBUtton.click();
 
 
-        WebElement secretAns = driver.findElement(By.xpath(".//*[@id='FirstName']"));
-        secretAns.sendKeys("Hello");
+
+       //TODO : Write code for dropdown
+
+        WebElement secretAns = driver.findElement(By.xpath(".//*[@id='SecretAnswer']"));
+        secretAns.sendKeys("Enargy");
 
 
     }
