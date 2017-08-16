@@ -130,38 +130,47 @@ public class RegistrationTestScript {
     }
 
     public void registerUser(){
-        WebElement firstName = driver.findElement(By.xpath(".//*[@id='FirstName']"));
+        WebElement firstName = driver.findElement(By.xpath("./*//*[@id='FirstName']"));
         firstName.sendKeys("Saad");
 
-        WebElement lastName = driver.findElement(By.xpath(".//*[@id='LastName']"));
+        WebElement lastName = driver.findElement(By.xpath("./*//*[@id='LastName']"));
         lastName.sendKeys("Abdullah");
 
-        WebElement email = driver.findElement(By.xpath(".//*[@id='Email']"));
+        WebElement email = driver.findElement(By.xpath("./*//*[@id='Email']"));
         email.sendKeys("saadabdullah@mail.com");
 
-        WebElement confirEmail = driver.findElement(By.xpath(".//*[@id='ConfirmEmail']"));
+        WebElement confirEmail = driver.findElement(By.xpath("./*//*[@id='ConfirmEmail']"));
         confirEmail.sendKeys("saadabdullah@mail.com");
 
-        WebElement userID = driver.findElement(By.xpath(".//*[@id='WebId']"));
+        WebElement userID = driver.findElement(By.xpath("./*//*[@id='WebId']"));
         userID.sendKeys("Saad123");
 
-        WebElement password = driver.findElement(By.xpath(".//*[@id='Password'] "));
+        WebElement password = driver.findElement(By.xpath("./*//*[@id='Password'] "));
         password.sendKeys("1234567asdf");
 
-        WebElement confirmPassword = driver.findElement(By.xpath(".//*[@id='ConfirmPassword']"));
+        WebElement confirmPassword = driver.findElement(By.xpath("./*//*[@id='ConfirmPassword']"));
         confirmPassword.sendKeys("1234567asdf");
 
-        WebElement dropDownBoxBUtton = driver.findElement(By.xpath("//button[@class='btn dropdown-toggle selectpicker btn-select']"));
-        dropDownBoxBUtton.click();
+        WebElement dropDownBoxBtton = driver.findElement(By.xpath(".//*[@id='RegisterForm']//button"));
+        dropDownBoxBtton.click();
 
 
+        List<WebElement> dropdownList = driver.findElements(By.xpath("//span[text()='[Select a Question From the List]']/ancestor::ul/li[position()=1]/following-sibling::li"));
 
-       //TODO : Write code for dropdown
+        for(WebElement element : dropdownList){
+            if(element.getText().contentEquals("Who is your favorite actor, musician, or artist?")){
+                element.click();
+            }
+        }
 
         WebElement secretAns = driver.findElement(By.xpath(".//*[@id='SecretAnswer']"));
-        secretAns.sendKeys("Enargy");
+        secretAns.sendKeys("Batman");
 
+        driver.findElement(By.xpath(".//*[@id='AcceptTerms']")).click();
+
+        driver.findElement(By.xpath(".//*[@id='RegisterForm']//input[@value='Cancel']")).click();
 
     }
+
 
 }
